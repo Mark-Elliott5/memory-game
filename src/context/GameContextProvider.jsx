@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import GameContext from './GameContext';
 import PropTypes from 'prop-types';
 
@@ -47,7 +47,7 @@ function GameContextProvider({ children }) {
   }
 
   return (
-    <GameContext.Provider value={[updateGuesses]}>
+    <GameContext.Provider value={{ updateGuesses }}>
       {children}
     </GameContext.Provider>
   );
