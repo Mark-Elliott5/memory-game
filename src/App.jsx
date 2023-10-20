@@ -1,23 +1,24 @@
-// import { useState } from 'react';
+import { useEffect } from 'react';
 import GameContextProvider from './context/GameContextProvider';
+import { v4 as uuid } from 'uuid';
 import Tile from './Tile';
 import githubMark from './assets/github-mark-white.png';
 import './App.css';
 
 function App() {
   const tiles = [
-    { id: 'blossom' },
-    { id: 'eddy' },
-    { id: 'courage' },
-    { id: 'johnnybravo' },
-    { id: 'dexter' },
-    { id: 'numbuh1' },
-    { id: 'bloo' },
-    { id: 'finn' },
-    { id: 'samuraijack' },
-    { id: 'mordecai' },
-    { id: 'gumball' },
-    { id: 'ben10' },
+    { id: 'Blossom', imagePath: 'blossom.jpg', key: uuid() },
+    { id: 'Eddy', imagePath: 'eddy.jpg', key: uuid() },
+    { id: 'Courage', imagePath: 'courage.jpg', key: uuid() },
+    { id: 'Johnny Bravo', imagePath: 'johnnybravo.jpg', key: uuid() },
+    { id: 'Dexter', imagePath: 'dexter.jpg', key: uuid() },
+    { id: 'Numbuh 1', imagePath: 'numbuh1.jpg', key: uuid() },
+    { id: 'Bloo', imagePath: 'bloo.jpg', key: uuid() },
+    { id: 'Finn', imagePath: 'finn.jpg', key: uuid() },
+    { id: 'Samurai Jack', imagePath: 'samuraijack.jpg', key: uuid() },
+    { id: 'Mordecai', imagePath: 'mordecai.jpg', key: uuid() },
+    { id: 'Gumball', imagePath: 'gumball.jpg', key: uuid() },
+    { id: 'Ben10', imagePath: 'ben10.jpg', key: uuid() },
   ];
 
   const randomizeTiles = () => {
@@ -29,13 +30,7 @@ function App() {
     return (
       <>
         {copyTiles.map((tile) => (
-          <Tile
-            key={tile.key}
-            id={tile.id}
-            imagePath={tile.imagePath}
-            name={tile.name}
-            value={tile.value}
-          />
+          <Tile key={tile.key} id={tile.id} imagePath={tile.imagePath} />
         ))}
       </>
     );
@@ -45,7 +40,7 @@ function App() {
     <>
       <header>Memory Game</header>
       <GameContextProvider>
-        <div id="tiles-wrapper">{randomizeTiles}</div>
+        <div id="tiles-wrapper">{randomizeTiles()}</div>
       </GameContextProvider>
       <footer>
         Designed by Mark Elliott{' '}

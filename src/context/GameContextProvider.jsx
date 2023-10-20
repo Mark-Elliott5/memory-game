@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import GameContext from './GameContext';
 import PropTypes from 'prop-types';
 
@@ -42,9 +42,16 @@ function GameContextProvider({ children }) {
     }
     const newGuessesArray = [...guesses];
     newGuessesArray.push(guess);
-    setGameData({ ...gameData, guesses: newGuessesArray });
     updateScore();
+    setGameData({ ...gameData, guesses: newGuessesArray });
+    // must set all data at once or some properties will be skipped
+    // putting updateScore before guesses update results in score property
+    // being skipped, and vice versa.
   }
+
+  useEffect(() => {
+    console.log(gameData);
+  }, [gameData]);
 
   return (
     <GameContext.Provider value={{ updateGuesses }}>

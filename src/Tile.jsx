@@ -2,12 +2,12 @@ import { useContext } from 'react';
 import GameContext from './context/GameContext';
 import PropTypes from 'prop-types';
 
-function Tile({ id, imagePath, name, value }) {
+function Tile({ id, imagePath }) {
   const { updateGuesses } = useContext(GameContext);
 
   function handleClick() {
     // do stuff
-    updateGuesses(value);
+    updateGuesses(id);
   }
   return (
     <div id={id} className="tile" onClick={handleClick}>
@@ -20,8 +20,6 @@ function Tile({ id, imagePath, name, value }) {
 Tile.propTypes = {
   id: PropTypes.string.isRequired,
   imagePath: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
 };
 
 export default Tile;
