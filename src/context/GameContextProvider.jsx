@@ -11,19 +11,21 @@ function GameContextProvider({ children }) {
   });
 
   function updateWins() {
-    setGameData({ ...gameData, wins: gameData.wins + 1 });
+    setGameData({
+      ...gameData,
+      wins: gameData.wins + 1,
+      score: 0,
+      guesses: [],
+    });
   }
 
   function updateLosses() {
-    setGameData({ ...gameData, losses: gameData.losses + 1 });
-  }
-
-  function updateScore() {
-    setGameData({ ...gameData, score: gameData.score + 1 });
-  }
-
-  function resetGame() {
-    setGameData({ ...gameData, guesses: [] });
+    setGameData({
+      ...gameData,
+      losses: gameData.losses + 1,
+      score: 0,
+      guesses: [],
+    });
   }
 
   function updateGuesses(guess) {
@@ -31,19 +33,20 @@ function GameContextProvider({ children }) {
     if (guesses.includes(guess)) {
       // alert loss here
       updateLosses();
-      resetGame();
       return;
     }
-    if (guesses.length === 12) {
+    if (guesses.length === 11) {
       // alert wins here
       updateWins();
-      resetGame();
       return;
     }
     const newGuessesArray = [...guesses];
     newGuessesArray.push(guess);
-    updateScore();
-    setGameData({ ...gameData, guesses: newGuessesArray });
+    setGameData({
+      ...gameData,
+      score: gameData.score + 1,
+      guesses: newGuessesArray,
+    });
     // must set all data at once or some properties will be skipped
     // putting updateScore before guesses update results in score property
     // being skipped, and vice versa.
