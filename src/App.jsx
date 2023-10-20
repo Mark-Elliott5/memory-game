@@ -1,33 +1,58 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+// import { useState } from 'react';
+import GameContextProvider from './context/GameContextProvider';
+import Tile from './Tile';
+import githubMark from './assets/github-mark-white.png';
 import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const tiles = [
+    { id: 'blossom' },
+    { id: 'eddy' },
+    { id: 'courage' },
+    { id: 'johnnybravo' },
+    { id: 'dexter' },
+    { id: 'numbuh1' },
+    { id: 'bloo' },
+    { id: 'finn' },
+    { id: 'samuraijack' },
+    { id: 'mordecai' },
+    { id: 'gumball' },
+    { id: 'ben10' },
+  ];
+
+  const randomizeTiles = () => {
+    const copyTiles = [...tiles];
+    for (let i = copyTiles.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copyTiles[i], copyTiles[j]] = [copyTiles[j], copyTiles[i]];
+    }
+    return (
+      <>
+        {copyTiles.map((tile) => (
+          <Tile
+            key={tile.key}
+            id={tile.id}
+            imagePath={tile.imagePath}
+            name={tile.name}
+            value={tile.value}
+          />
+        ))}
+      </>
+    );
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
+      <header>Memory Game</header>
+      <GameContextProvider>
+        <div id="tiles-wrapper">{randomizeTiles}</div>
+      </GameContextProvider>
+      <footer>
+        Designed by Mark Elliott{' '}
+        <a href="https://github.com/Mark-Elliott5">
+          <img className="github-link" src={githubMark} />
         </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      </footer>
     </>
   );
 }
