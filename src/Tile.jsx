@@ -1,19 +1,21 @@
 import { useContext } from 'react';
 import GameContext from './context/GameContext';
 import PropTypes from 'prop-types';
+import Tilt from 'react-parallax-tilt';
 
 function Tile({ id, imagePath }) {
   const { updateGuesses } = useContext(GameContext);
 
   function handleClick() {
-    // do stuff
     updateGuesses(id);
   }
   return (
-    <div id={id} className="tile" onClick={handleClick}>
-      <img className="tile-image" src={imagePath} />
-      <p className="tile-name">{id}</p>
-    </div>
+    <Tilt>
+      <div id={id} className="tile" onClick={handleClick}>
+        <img className="tile-image" src={imagePath} />
+        {/* <p className="tile-name">{id}</p> */}
+      </div>
+    </Tilt>
   );
 }
 

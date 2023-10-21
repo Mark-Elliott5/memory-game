@@ -1,13 +1,12 @@
-// import { useEffect } from 'react';
 import GameContextProvider from './context/GameContextProvider';
-import TileWrapper from './TileWrapper';
-import githubMark from './assets/github-mark-white.png';
-import './App.css';
+import TileWrapper from '../public/characterportraits/TileWrapper';
+import Scoreboard from './Scoreboard';
 
 function App() {
   return (
     <>
       <GameContextProvider>
+        <Scoreboard />
         <TileWrapper />
       </GameContextProvider>
     </>

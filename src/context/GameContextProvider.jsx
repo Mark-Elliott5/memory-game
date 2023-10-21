@@ -31,12 +31,10 @@ function GameContextProvider({ children }) {
   function updateGuesses(guess) {
     const { guesses } = gameData;
     if (guesses.includes(guess)) {
-      // alert loss here
       updateLosses();
       return;
     }
     if (guesses.length === 11) {
-      // alert wins here
       updateWins();
       return;
     }

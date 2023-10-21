@@ -6,7 +6,10 @@ import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <header>Memory Game</header>
+    <header>
+      <img src="cartoonnetworklogo.png" />
+      <p>Memory Game</p>
+    </header>
     <App />
     <footer>
       Designed by Mark Elliott{' '}
