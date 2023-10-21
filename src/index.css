@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Eagle';
-  src: url('font.otf') format('opentype');
+  src: url('/font.otf') format('opentype');
 }
 
 :root {

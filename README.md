@@ -8,4 +8,4 @@ This Resume project features:
 - Vite
 - Netlify deployment
 
-![resume](public/memory-game.png)
+![memory-game](images/memory-game.jpg)
