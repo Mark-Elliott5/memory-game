@@ -12,7 +12,7 @@ function Tile({ id, imagePath }) {
   return (
     <div id={id} className="tile" onClick={handleClick}>
       <img className="tile-image" src={imagePath} />
-      <p className="tile-name">{name}</p>
+      <p className="tile-name">{id}</p>
     </div>
   );
 }

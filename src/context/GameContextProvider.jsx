@@ -57,7 +57,7 @@ function GameContextProvider({ children }) {
   }, [gameData]);
 
   return (
-    <GameContext.Provider value={{ updateGuesses }}>
+    <GameContext.Provider value={{ gameData, updateGuesses }}>
       {children}
     </GameContext.Provider>
   );
