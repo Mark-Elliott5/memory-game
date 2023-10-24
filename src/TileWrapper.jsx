@@ -1,14 +1,10 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { v4 as uuid } from 'uuid';
-import GameContext from '../../src/context/GameContext';
-import Tile from '../../src/Tile';
+import Tile from './Tile';
+import { Flipper, Flipped } from 'react-flip-toolkit';
 
 function TileWrapper() {
-  // context is required to trigger rerender when tile is clicked
-  // then modifies context data, so tiles can be randomized
-  useContext(GameContext);
-
-  const [tiles] = useState([
+  const [tiles, setState] = useState([
     {
       id: 'Blossom',
       imagePath: '/characterportraits/blossom.jpg',
@@ -25,7 +21,11 @@ function TileWrapper() {
       imagePath: '/characterportraits/johnnybravo.jpg',
       key: uuid(),
     },
-    { id: 'Dexter', imagePath: '/characterportraits/dexter.jpg', key: uuid() },
+    {
+      id: 'Dexter',
+      imagePath: '/characterportraits/dexter.jpg',
+      key: uuid(),
+    },
     {
       id: 'Numbuh 1',
       imagePath: '/characterportraits/numbuh1.jpg',
@@ -57,15 +57,23 @@ function TileWrapper() {
       const j = Math.floor(Math.random() * (i + 1));
       [copyTiles[i], copyTiles[j]] = [copyTiles[j], copyTiles[i]];
     }
-    return copyTiles;
+    setState(copyTiles);
   };
 
   return (
-    <div id="tiles-wrapper">
-      {randomizeTiles().map((tile) => (
-        <Tile key={tile.key} id={tile.id} imagePath={tile.imagePath} />
-      ))}
-    </div>
+    <Flipper flipKey={uuid()} spring={{ stiffness: 260, damping: 26 }}>
+      <div id="tiles-wrapper">
+        {tiles.map((tile) => (
+          <Flipped key={tile.key} flipId={tile.key}>
+            <Tile
+              id={tile.id}
+              imagePath={tile.imagePath}
+              handleTileClick={randomizeTiles}
+            />
+          </Flipped>
+        ))}
+      </div>
+    </Flipper>
   );
 }
 

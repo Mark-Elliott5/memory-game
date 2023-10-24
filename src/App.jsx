@@ -1,5 +1,5 @@
 import GameContextProvider from './context/GameContextProvider';
-import TileWrapper from '../public/characterportraits/TileWrapper';
+import TileWrapper from './TileWrapper';
 import Scoreboard from './Scoreboard';
 
 function App() {
