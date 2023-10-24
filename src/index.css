@@ -29,7 +29,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
-  overflow: hidden;
+  height: 100dvh;
 }
 
 header > img {
@@ -41,10 +41,14 @@ header > p {
 }
 
 #scoreboard {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 0px 10px;
+  margin: 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+#scoreboard > p {
+  margin: 0;
+  font-size: 20px;
 }
 
 #tiles-wrapper {
@@ -66,13 +70,16 @@ header > p {
   box-shadow: 0px 0px 6px rgb(255 255 255);
   text-align: center;
   overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .tile-image {
   width: 100%;
   aspect-ratio: 1;
 }
-
 
 header {
   text-align: center;
@@ -106,13 +113,18 @@ a {
   display: grid;
 }
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 750px) {
+  #root {
+    justify-content: space-evenly;
+    height: 100%;
+  }
+
   #tiles-wrapper {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-@media screen and (max-width: 460px) {
+@media screen and (max-width: 450px) {
   #tiles-wrapper {
     grid-template-columns: repeat(3, 1fr);
   }
