@@ -105,3 +105,15 @@ a {
   text-align: center;
   display: grid;
 }
+
+@media screen and (max-width: 780px) {
+  #tiles-wrapper {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (max-width: 460px) {
+  #tiles-wrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
